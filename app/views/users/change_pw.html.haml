@@ -1,0 +1,21 @@
+%section.content
+  .form-unit
+    = link_to root_path, class: 'brand' do
+      %h1= blog_title
+    %h3 Reset password
+    - if flash[:success].present?
+      .alert.alert-success
+        %a.close{"data-dismiss"=>"success"} &times;
+        %span
+          = flash[:success]
+    - elsif flash[:error].present?
+      .alert.alert-danger
+        %a.close{"data-dismiss"=>"alert"} &times;
+        %span= raw flash[:error]
+    = form_for :user, url: change_pw_confirm_users_path, role: 'form' do |f|
+      .form-field.form-group
+        = f.hidden_field :token, value: @token
+        = f.password_field :password, placeholder: 'Password', class: 'form-control', required: true
+      .form-field.form-group
+        = f.password_field :password_confirmation, placeholder: 'Confirm password', class: 'form-control password', required: true
+      = submit_tag 'Reset', class: 'btn btn-primary btn-lg'

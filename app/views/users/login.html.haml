@@ -1,0 +1,29 @@
+%section.content
+  .form-unit
+    = link_to root_path, class: 'brand' do
+      %h1= blog_title
+    %h3 User login
+    - errors = @user ? @user.errors.full_messages : []
+    - if errors.any?
+      .alert.alert-danger
+        %a.close{"data-dismiss"=>"alert"} &times;
+        %span
+          = errors.first
+    - if flash[:success].present?
+      .alert.alert-success
+        %a.close{"data-dismiss"=>"success"} &times;
+        %span
+          = flash[:success]
+    - elsif flash[:error].present?
+      .alert.alert-danger
+        %a.close{"data-dismiss"=>"alert"} &times;
+        %span= raw flash[:error]
+    = form_for :user, url: login_confirm_users_path(from: params[:from].present? ? params[:from] : ''), role: 'form' do |f|
+      .form-field.form-group
+        = f.text_field :username, placeholder: 'Username', class: 'form-control username', required: true
+      .form-field.form-group
+        = f.password_field :password, placeholder: 'Password', class: 'form-control password', required: true
+      = submit_tag 'Login', class: 'btn btn-primary btn-lg'
+      .action-wrapper
+        = link_to 'No account ?', register_path
+        = link_to 'Forget password?', forget_password_users_path

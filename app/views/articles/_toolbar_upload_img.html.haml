@@ -1,0 +1,32 @@
+= form_for :upload, url: upload_img_blogs_path, enctype: "multipart/form-data", class: 'form-horizontal', role: 'form', remote: true do |f|
+  .modal.fade#upload_modal
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss"=>"modal"}
+            %span{"aria-hidden"=>"true"}
+              &times;
+            %span.sr-only
+              Close
+          %h4 upload image
+        .modal-body
+          .form-group.row.text-center
+            .error.text-center#error
+            %label.col-sm-2.control-label.text-right{for: "upload_img"} image:
+            .col-sm-8.text-left
+              = token_tag
+              = f.hidden_field :text_id, value: text_id
+              = f.file_field :img
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss"=>"modal"} shut down
+          = submit_tag 'Upload', class: 'btn btn-primary'
+
+
+:javascript
+  $(function(){
+    new MarkdownToolbar($('##{text_id}'));
+    $('.mdt_button_image').unbind('click');
+    $('.mdt_button_image').click(function(){
+      $('#upload_modal').modal('show');
+    });
+  });

@@ -1,0 +1,7 @@
+- unless @comments.present?
+  .jumbotron#no_comments
+    %h2 No comments yet
+- @comments.each do |comment|
+  = render partial: 'comment', locals: {comment: comment}
+#paginate
+  = paginate @comments, remote: true

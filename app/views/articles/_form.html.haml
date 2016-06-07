@@ -1,0 +1,39 @@
+= render partial: 'toolbar_upload_img', locals: {text_id: 'article_content'}
+
+= form_for @article, role: 'form' do |f|
+  .form-group
+    %label{for: 'article_title'} Article Title
+    = f.text_field :title, placeholder: 'Article Title', class: 'form-control'
+  .form-group
+    %label{for: 'article_category_id'} Article Categories
+    = select_tag "article[category_id]", options_for_select(get_categories_options, @article.category_id), include_blank: true, class: 'form-control'
+    Or create a new category:
+    = f.text_field :category_name, placeholder: 'Category Name', class: 'form-control'
+  .form-group
+    %label{for: 'article_tags'} label
+    = f.text_field :tags, placeholder: 'Tag , a plurality of English " , " separated', class: 'form-control'
+  .form-group
+    %label{for: 'article_source'} Article Source
+    = f.text_field :source, placeholder: 'Source is empty compared to the original', class: 'form-control'
+  .form-group
+    %ul.nav.nav-tabs#preview_tab{role: "tablist"}
+      %li.active
+        = link_to 'Article Content', '#edit', role: 'tab', 'data-toggle'=>'tab'
+      %li
+        = link_to 'Preview', '#preview', role: 'tab', 'data-toggle'=>'tab'
+    .tab-content
+      .tab-pane.active#edit
+        = f.text_area :content, placeholder: 'Article Content', class: 'form-control'
+      .tab-pane#preview
+  .form-group
+    = f.submit 'Submit', class: 'btn btn-success btn-lg btn-block'
+
+:javascript
+  $(function(){
+    $('#preview_tab a[href="#preview"]').click(function(e){
+      e.preventDefault();
+      $(this).tab('show');
+      preview('article_content', 'preview');
+    });
+  });
+

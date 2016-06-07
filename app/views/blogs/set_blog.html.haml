@@ -1,0 +1,19 @@
+.row
+  %h3.set_title Set up
+  = render 'set_sidebar', obj: @blog
+  .col-md-8
+    = form_for @blog, as: 'blog', url: update_blog_blogs_path, method: 'post', role: 'form' do |f|
+      .form-group
+        %label{for: 'blog_name'} Bloggers
+        = f.text_field :name, placeholder: 'Blog name', class: 'form-control'
+      .form-group
+        %label{for: 'blog_blog_title'} Blog title
+        = f.text_field :blog_title, placeholder: 'Blog title', class: 'form-control'
+      .form-group
+        %label{for: 'blog_email'} Contact E-mail
+        = f.text_field :email, placeholder: 'Contact E-mail', class: 'form-control'
+      .form-group
+        %label{for: 'blog_description'} About Bloggers
+        = f.text_area :description, placeholder: '关于博主', class: 'form-control blog-description'
+      .form-group
+        = f.submit 'Submit', class: 'btn btn-primary set-btn'

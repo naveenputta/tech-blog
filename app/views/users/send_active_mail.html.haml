@@ -1,0 +1,5 @@
+%h2.text-center
+  - if @result[:status]
+    = "The activation email sent successfully , please log on the mailbox #{@result[:message]}Activation ."
+  - else
+    = "Failed to send the activation email , #{link_to 'Click here', send_active_mail_users_path}Resend"

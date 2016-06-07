@@ -1,0 +1,10 @@
+.text-left
+  %p
+    %h2 Bloggers
+    = @blog ? @blog.name : 'Is not set'
+  %p
+    %h2 email
+    = @blog ? (link_to @blog.email, "mailto:#{@blog.email}") : 'Is not set'
+  %p
+    %h2 Brief introduction
+    = @blog ? @blog.description : 'Is not set'
