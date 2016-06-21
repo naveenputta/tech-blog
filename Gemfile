@@ -24,7 +24,7 @@ gem 'haml-rails'
 # Use bootstrap css
 gem 'bootstrap-sass', '~> 3.1.1.0'
 gem 'font-awesome-sass-rails', '~> 3.0.2.2'
-gem 'twitter-bootstrap-rails-confirm', github: 'fxhover/twitter-bootstrap-rails-confirm', branch: 'bootstrap3'
+gem 'twitter-bootstrap-rails-confirm'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -49,7 +49,7 @@ end
 gem 'gravatar_image_tag'
 
 #markdown
-gem 'markdown-toolbar', git: 'git@github.com:fxhover/markdown-toolbar.git'
+gem 'markdown-toolbar'
 gem 'redcarpet'
 
 #file upload
