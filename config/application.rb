@@ -24,20 +24,19 @@ module TechBlog
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
     #config.i18n.default_locale = "zh-CN"
 
-    BLOG_CONFIG = YAML.load_file(File.join(Rails.root, 'config/blog.yml'))[Rails.env.to_s]
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.perform_deliveries = true
-    config.action_mailer.raise_delivery_errors = true
-    config.action_mailer.default :charset => "utf-8"
-    config.action_mailer.default_url_options = {host: BLOG_CONFIG['blog']['domain']}
-    config.action_mailer.smtp_settings = {
-        address: BLOG_CONFIG['mailer']['address'],
-        port: BLOG_CONFIG['mailer']['port'],
-        user_name: BLOG_CONFIG['mailer']['user_name'],
-        password: BLOG_CONFIG['mailer']['password'],
-        authentication: 'plain',
-        enable_starttls_auto: false
-    }
+    # BLOG_CONFIG = YAML.load_file(File.join(Rails.root, 'config/blog.yml'))[Rails.env.to_s]
+    # config.action_mailer.delivery_method = :smtp
+    # config.action_mailer.perform_deliveries = true
+    # config.action_mailer.default :charset => "utf-8"
+    # config.action_mailer.default_url_options = {host: BLOG_CONFIG['blog']['domain']}
+    # config.action_mailer.smtp_settings = {
+    #     address: BLOG_CONFIG['mailer']['address'],
+    #     port: BLOG_CONFIG['mailer']['port'],
+    #     user_name: BLOG_CONFIG['mailer']['user_name'],
+    #     password: BLOG_CONFIG['mailer']['password'],
+    #     authentication: 'plain',
+    #     enable_starttls_auto: false
+    # }
 
     config.action_view.sanitized_allowed_tags = ["table", "tr", "td", "strong", "em", "b", "i", "p", "code", "pre", "tt", "samp", "kbd", "var", "sub", "sup", "dfn", "cite", "big", "small", "address", "hr", "br", "div", "span", "h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol", "li", "dl", "dt", "dd", "abbr", "acronym", "a", "img", "blockquote", "del", "ins"]
     config.action_view.sanitized_allowed_attributes = ["href", "src", "width", "height", "alt", "cite", "datetime", "title", "class", "name", "xml:lang", "abbr", "style"]
