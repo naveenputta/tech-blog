@@ -1,0 +1,23 @@
+shared: &shared
+  adapter: postgresql
+  encoding: utf8
+  username: postgres
+
+local: &local
+  adapter: postgresql
+  encoding: utf8
+  username: <%= ENV['POSTGRES_USERNAME'] || ENV['USER'] %>
+  host: localhost
+
+development:
+  <<: *local
+  database: blog_development
+  username: postgres
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: blog_production
+  pool: 5
+  username: myapp
+  password:
