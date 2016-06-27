@@ -2,7 +2,7 @@
 class UserMailer < ActionMailer::Base
   helper ApplicationHelper
 
-  default from: Settings.mailer.user_name
+  default from: 'example@gmail.com'
 
   def auth_mail(email, url)
     @url  = url

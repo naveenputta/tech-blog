@@ -58,7 +58,7 @@ class UsersController < ApplicationController
       if wait_user.present?
         token = UserActive.generate_token
         active = UserActive.new user_id: wait_user.id, type_name: 'Active', token: token
-        url = File.join(Settings.blog.domain, "users/activation?token=#{token}")
+        url = File.join('http://localhost:3000', "users/activation?token=#{token}")
         if active.save && UserMailer.auth_mail(session[:wait_active_email], url).deliver
           @result[:status] = true
           @result[:message] = session[:wait_active_email]
@@ -97,7 +97,7 @@ class UsersController < ApplicationController
       return redirect_to(root_path) unless user
       token = UserActive.generate_token
       active = UserActive.new user_id: user.id, token: token, type_name: 'ForgetPassword'
-      url = File.join(Settings.blog.domain, "users/change_pw?token=#{token}")
+      url = File.join('http://localhost:3000', "users/change_pw?token=#{token}")
       if active.save && UserMailer.forget_password(user.email, url).deliver
         @result[:status] = true
         @result[:message] = user.email
