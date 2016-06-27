@@ -59,6 +59,8 @@ gem 'remotipart'
 #share article
 gem 'social-share-button'
 
+gem 'rails_12factor'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
