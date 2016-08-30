@@ -68,7 +68,7 @@ class UsersController < ApplicationController
   end
 
   def activation
-    active = UserActive.where(type_name: 'Active', token: params[:token], used: 0).order('created_at desc').first
+    active = UserActive.where(type_name: 'Active', token: params[:token], used: false).order('created_at desc').first
     if active && !active.used?
       user = User.find active.user_id
       user.activation = 1
