@@ -61,6 +61,9 @@ gem 'social-share-button'
 
 gem 'rails_12factor'
 
+#generate the user friendly id
+gem 'friendly_id', '~> 5.1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

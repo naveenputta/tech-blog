@@ -1,5 +1,7 @@
 #encoding: utf-8
 class Article < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   attr_accessor :category_name
   belongs_to :category, counter_cache: 'articles_count'
   belongs_to :user
